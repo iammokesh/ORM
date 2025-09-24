@@ -1,5 +1,5 @@
 # Ex02 Django ORM Web Application
-# Date:
+# Date:24.09.2025
 # AIM
 To develop a Django application to store and retrieve data from a bank loan database using Object Relational Mapping(ORM).
 
@@ -19,49 +19,30 @@ Execute Django admin and create details for 10 books
 
 # PROGRAM
 ```
-model.py
+from django.db import models
+
 from django.db import models
 from django.contrib import admin
-
-class Car(models.Model):
-    car_brand = models.CharField()
-    car_model = models.CharField()
-    year = models.IntegerField()
-    color = models.CharField()
-    engine_type = models.CharField()
-    fuel_type = models.CharField(
-        max_length=20,
-        choices=[("Petrol", "Petrol"), ("Diesel", "Diesel"), ("Electric", "Electric"), ("Hybrid", "Hybrid")],
-        help_text="Fuel Type"
-    )
-    transmission = models.CharField(
-        max_length=20,
-        choices=[("Manual", "Manual"), ("Automatic", "Automatic")],
-        help_text="Transmission Type"
-    )
-    seating_capacity = models.IntegerField(help_text="Number of Seats")
-    price = models.CharField()
-    mileage = models.CharField()
-    description = models.TextField()
-
-    def str(self):
-        return f"{self.brand} {self.model} ({self.year})"
-
-
-class CarAdmin(admin.ModelAdmin):
-    list_display = ('car_brand', 'car_model', 'year', 'color', 'fuel_type', 'transmission','price','mileage','description')
-
-    admin.py
+class car_inventory(models.Model):
+    car_name=models.CharField(max_length=100)
+    car_colour=models.CharField(max_length=100)
+    car_model=models.CharField(max_length=100)
+    car_price=models.IntegerField()
     
+    
+    def _str_(self):
+        return self.car_name
+class carAdmin(admin.ModelAdmin):
+    list_display=['car_name','car_colour','car_model','car_price']
+    search_fields=['car_name','car_colour']
 from django.contrib import admin
-
-from.models import (Car,CarAdmin)
-
-admin.site.register(Car,CarAdmin)
+from django.contrib import admin
+from .models import car_inventory,carAdmin    
+admin.site.register(car_inventory,carAdmin)
 # Register your models here.
 ```
 # OUTPUT
-![alt text](<Screenshot 2025-09-22 180127.png>)
+[alt text](<../Screenshot (5).png>)
 
 # RESULT
 Thus the program for creating a database using ORM hass been executed successfully
