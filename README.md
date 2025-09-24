@@ -42,7 +42,7 @@ admin.site.register(car_inventory,carAdmin)
 # Register your models here.
 ```
 # OUTPUT
-[alt text](<../Screenshot (5).png>)
+![alt text](<Screenshot (5).png>)
 
 # RESULT
 Thus the program for creating a database using ORM hass been executed successfully
